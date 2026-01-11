@@ -6,7 +6,7 @@ const spaceGrotesk = localFont({
   weight: "300 400 500 600 700",
 });
 export default function Home() {
-  console.dir("I am a Server Component");
+  console.log("Page rendered as a  Server Component");
   return (
     <section className={`${spaceGrotesk.className}`}>
       Welcome to Stack Overflow Clone by using Next 16.1.1

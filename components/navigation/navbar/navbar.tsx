@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import ThemeToggle from "@/components/navigation/navbar/theme-toggle";
 
 const Navbar = () => {
+  console.log("Navbar rendered as Server Component");
   return (
     <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
       <Link href="/" className="flex items-center gap-5">
@@ -16,7 +18,9 @@ const Navbar = () => {
         </p>
       </Link>
       <p>Global Search</p>
-      <div className="flex-between gap-5"> Theme Changer</div>
+      <div className="flex-between gap-5">
+        <ThemeToggle />
+      </div>
     </nav>
   );
 };
