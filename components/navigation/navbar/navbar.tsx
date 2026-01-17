@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import ThemeToggle from "@/components/navigation/navbar/theme-toggle";
+import ThemeToggle from "@/components/navigation/navbar/themeToggle";
 
 const Navbar = () => {
   console.log("Navbar rendered as Server Component");

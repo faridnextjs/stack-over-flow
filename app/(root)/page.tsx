@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 
 const spaceGrotesk = localFont({
-  src: "./fonts/SpaceGrotesk.ttf",
+  src: "../fonts/SpaceGrotesk.ttf",
   variable: "--font-space-grotesk",
   weight: "300 400 500 600 700",
 });
