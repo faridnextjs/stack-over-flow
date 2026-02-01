@@ -3,7 +3,7 @@ import Image from "next/image";
 import ThemeToggle from "@/components/navigation/navbar/themeToggle";
 
 const Navbar = () => {
-  console.log("Navbar rendered as Server Component");
+  console.log("Navbar rendered");
   return (
     <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
       <Link href="/" className="flex items-center gap-5">

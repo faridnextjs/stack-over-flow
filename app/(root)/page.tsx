@@ -1,4 +1,5 @@
 import localFont from "next/font/local";
+import Session from "@/lib/actions/session";
 
 const spaceGrotesk = localFont({
   src: "../fonts/SpaceGrotesk.ttf",
@@ -10,7 +11,8 @@ const Home = () => {
   console.log("Page rendered as a  Server Component");
   return (
     <section className={`${spaceGrotesk.className}`}>
-      Welcome to Stack Overflow Clone by using Next 16.1.1
+      Welcome to Stack Overflow Clone by using Next 16.1.6
+      <Session />
     </section>
   );
 };

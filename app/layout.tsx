@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
 import ThemeProvider from "@/context/themeProvider";
+import { Toaster } from "sonner";
+import { Suspense } from "react";
+import SessionWrapper from "@/lib/actions/sessionWrapper";
 
 export const metadata: Metadata = {
   title: "Dev Overflow Stable",
@@ -17,23 +20,30 @@ const googleSansFlex = localFont({
   weight: "100 200 300 400 500 600 700 800 900",
 });
 
-export default function RootLayout({
+const RootLayout = async ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${googleSansFlex.variable}  antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <Suspense>
+          <SessionWrapper>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}
+              <Toaster />
+            </ThemeProvider>
+          </SessionWrapper>
+        </Suspense>
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
