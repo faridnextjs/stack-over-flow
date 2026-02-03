@@ -3,7 +3,7 @@ import SignInWithGithub from "@/lib/actions/signInWithGithub";
 
 const SocialAuthForm = () => {
   return (
-    <div className="mt-10 flex flex-wrap gap-2.5">
+    <div className="mt-10 flex flex-wrap justify-center gap-2">
       <SignInWithGithub />
       <SignInWithGoogle />
     </div>

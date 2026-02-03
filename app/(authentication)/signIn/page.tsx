@@ -1,4 +1,6 @@
+import CredentialsField from "@/components/forms/credentialsField";
+
 const SignIn = () => {
-  return <div>SignIn</div>;
+  return <CredentialsField />;
 };
 export default SignIn;
