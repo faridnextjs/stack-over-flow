@@ -1,6 +1,6 @@
 "use server";
-
 import { redirect } from "next/navigation";
+import Routes from "@/constants/routes";
 import { revalidatePath } from "next/cache";
 
 type FormState = {
@@ -27,15 +27,21 @@ const Credentials = async (
   prevForm: FormState | null,
   formData: FormData,
 ): Promise<FormState> => {
-  const errors: Record<string, string> = {},
-    inputData = {
-      email: validateInputs(formData?.get("email") as string, "emailField"),
-      password: validateInputs(
-        formData?.get("password") as string,
-        "passwordField",
-      ),
-      date: formatDate(currentDate),
-    };
+  const errors: Record<string, string> = {};
+  const pathname = validateInputs(
+    (formData?.get("pathname") as string).toLowerCase() as string,
+    "pathnameField",
+  );
+  console.log(pathname);
+
+  const inputData = {
+    email: validateInputs(formData?.get("email") as string, "emailField"),
+    password: validateInputs(
+      formData?.get("password") as string,
+      "passwordField",
+    ),
+    date: formatDate(currentDate),
+  };
 
   // Validate email
   if (!inputData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(inputData.email)) {
@@ -55,38 +61,40 @@ const Credentials = async (
     };
   }
 
-  if (
-    inputData.email !== "test@example.com" &&
-    inputData.password !== "password123"
-  ) {
+  if (pathname === "/signin") {
+    // Don't validate or log name/username for signin
+    if (
+      inputData.email === "next@example.com" &&
+      inputData.password === "next1234"
+    ) {
+      console.log("Sign In Data:", inputData);
+      revalidatePath(Routes.SIGN_IN, "layout");
+      redirect(Routes.HOME);
+    }
+
     return {
-      message: "Login failed!",
+      message: "Login failed! Invalid email or password.",
       errors: {},
     };
   }
 
-  try {
-    if (
-      inputData.email === "test@example.com" &&
-      inputData.password === "password123"
-    ) {
-      return {
-        message: "Login successful! Redirecting...",
-        errors: {},
-      };
-    }
-    console.dir(inputData);
-  } catch (error) {
-    console.error(error);
-    return {
-      message:
-        "An error occurred while processing your request. Please try again later.",
-      errors: {},
-    };
+  if (pathname === "/signup") {
+    // Only validate name and username for signup
+    const name = validateInputs(formData?.get("name") as string, "nameField");
+    const username = validateInputs(
+      formData?.get("username") as string,
+      "usernameField",
+    );
+
+    console.log("Sign Up Data:", { ...inputData, name, username });
+    revalidatePath(Routes.SIGN_UP, "layout");
+    redirect(Routes.HOME);
   }
-  console.dir(inputData);
-  revalidatePath("/", "layout");
-  return redirect("/");
+
+  return {
+    message: "Invalid pathname.",
+    errors: {},
+  };
 };
 
 export default Credentials;
