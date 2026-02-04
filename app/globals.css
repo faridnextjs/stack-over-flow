@@ -168,6 +168,7 @@
 
   --font-inter: var(--font-inter);
   --font-space-grotesk: var(--font-space-grotesk);
+  --font-google-sans-flex: var(--font-google-sans-flex);
 }
 
 @layer base {

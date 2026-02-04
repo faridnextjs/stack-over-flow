@@ -18,10 +18,7 @@ const CredentialsField = () => {
     pathName = usePathname();
   return (
     <section className="m-2">
-      <Form
-        action={formAction}
-        className="grid gap-2.5 place-content-center mb-4 mt-4"
-      >
+      <Form action={formAction} className="grid gap-2.5 mb-4 mt-4">
         {pathName === Routes.SIGN_UP && (
           <div className="gap-2">
             <label htmlFor="name">Name</label>
@@ -73,7 +70,7 @@ const CredentialsField = () => {
               variant="secondary"
               type="submit"
               disabled={isPending}
-              className="cursor-pointer"
+              className="cursor-pointer primary-gradient min-h-12 paragraph-medium w-full rounded-2 px-4 py-3 font-google-sans !text-light900"
             >
               {pathName === Routes.SIGN_UP ? "Sign Up" : "Sign In"}
             </Button>
