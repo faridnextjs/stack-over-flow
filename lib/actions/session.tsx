@@ -16,6 +16,7 @@ const GetSession = async () => {
   const session = await auth();
   if (!session?.user) return null;
   console.log("session", session);
+
   return (
     <section className="grid place-content-center gap-5 place-items-center h-dvh">
       <h1>

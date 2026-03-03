@@ -1,6 +1,1 @@
-import React from "react";
-
-const RightSideBar = () => {
-  return <div>RightSideBar</div>;
-};
-export default RightSideBar;
+const RightSideBar = () => {  return (    <article className="pt-36 custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-87.5 flex-col gap-6 overflow-y-auto border-l p-6 shadow-light-300 dark:shadow-none max-xl:hidden">      <section>        <h3 className="h3-bold text-dark200_light900"> Top Questions</h3>        {/* Container for Top Questions Section */}        <section className="flex flex-col mt-7 gap-7.5"></section>      </section>    </article>  );};export default RightSideBar;
