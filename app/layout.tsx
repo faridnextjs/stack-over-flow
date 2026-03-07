@@ -5,6 +5,10 @@ import ThemeProvider from "@/context/themeProvider";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
 import SessionWrapper from "@/lib/actions/sessionWrapper";
+import { JetBrains_Mono } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
 
 export const metadata: Metadata = {
   title: "Dev Overflow Stable",
@@ -26,7 +30,7 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={cn("font-mono", jetbrainsMono.variable)}>
       <body className={`${googleSansFlex.variable}  antialiased`}>
         <Suspense>
           <SessionWrapper>

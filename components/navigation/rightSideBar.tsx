@@ -1,1 +1,40 @@
-const RightSideBar = () => {  return (    <article className="pt-36 custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-87.5 flex-col gap-6 overflow-y-auto border-l p-6 shadow-light-300 dark:shadow-none max-xl:hidden">      <section>        <h3 className="h3-bold text-dark200_light900"> Top Questions</h3>        {/* Container for Top Questions Section */}        <section className="flex flex-col mt-7 gap-7.5"></section>      </section>    </article>  );};export default RightSideBar;
+import Link from "next/link";
+import Routes from "@/constants/routes";
+import Image from "next/image";
+
+const hotQuestions = [
+  { _id: 1, title: "How to learn React?" },
+  { _id: 2, title: "What is the best way to learn JavaScript?" },
+  { _id: 3, title: "How to improve coding skills?" },
+  { _id: 4, title: "What are the best resources for learning programming?" },
+  { _id: 5, title: "How to prepare for coding interviews?" },
+];
+
+const RightSideBar = () => {
+  return (
+    <article className="pt-36 custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-87.5 flex-col gap-6 overflow-y-auto border-l p-6 shadow-light-300 dark:shadow-none max-xl:hidden">
+      <section>
+        <h3 className="h3-bold text-dark200_light900"> Top Questions</h3>
+        {/* Container for Top Questions Section */}
+        <section className="flex flex-col mt-7 gap-7.5">
+          {hotQuestions.map(({ _id, title }) => (
+            <Link
+              key={_id}
+              href={Routes.PROFILE(_id)}
+              className="flex items-center cursor-pointer justify-between gap-7"
+            >
+              <p className="body-medium text-dark500_light700">{title}</p>
+              <Image
+                src="/icons/chevron-right.svg"
+                alt="Chevron"
+                width={20}
+                height={20}
+              />
+            </Link>
+          ))}
+        </section>
+      </section>
+    </article>
+  );
+};
+export default RightSideBar;
