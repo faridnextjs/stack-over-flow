@@ -3,11 +3,15 @@
 @import "shadcn/tailwind.css";
 @plugin "@tailwindcss/typography";
 
+/* SHADCN UI */
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-google-sans-flex: var(--font-google-sans-flex);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -44,7 +48,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
 }
 
 :root {
@@ -61,7 +65,7 @@
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.22 27);
+  --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
@@ -89,13 +93,13 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
+  --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
+  --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
@@ -124,13 +128,11 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-mono;
+    @apply font-sans;
   }
 }
 
-/* PASTE STARTS FROM HERE */
-
-@custom-variant dark (&:is(.dark *));
+/* PREDEFINED SHORTCUTS */
 
 @theme {
   --color-primary-100: #fff1e6;
@@ -166,8 +168,8 @@
   --shadow-dark-100: 0px 2px 10px 0px rgba(46, 52, 56, 0.1);
   --shadow-dark-200: 2px 0px 20px 0px rgba(39, 36, 36, 0.04);
 
-  --background-image-auth-dark: url("/images/auth-dark.png");
-  --background-image-auth-light: url("/images/auth-light.png");
+  --background-image-auth-dark: url("/public/images/auth-dark.png");
+  --background-image-auth-light: url("/public/images/auth-light.png");
 
   --breakpoint-xs: 420px;
 
@@ -186,6 +188,8 @@
   }
 }
 
+/* BACKGROUND IMAGE */
+
 @utility bg-auth-dark {
   background-image: var(--background-image-auth-dark);
 }
@@ -193,6 +197,8 @@
 @utility bg-auth-light {
   background-image: var(--background-image-auth-light);
 }
+
+/* BACKGROUND COLOR */
 
 @utility background-light850_dark100 {
   @apply bg-light-850 dark:bg-dark-100;
@@ -234,6 +240,8 @@
 @utility background-dark400_light900 {
   @apply dark:bg-dark-400! bg-light-900!;
 }
+
+/* TEXT COLOR */
 
 @utility text-dark100_light900 {
   @apply text-dark-100! dark:text-light-900!;
@@ -288,6 +296,8 @@
   @apply text-dark-400! dark:text-light-900!;
 }
 
+/* BORDER COLOR */
+
 @utility light-border {
   @apply border-light-800 dark:border-dark-300;
 }
@@ -296,8 +306,10 @@
   @apply border-light-700! dark:border-dark-400!;
 }
 
+/* HEADING SIZE & FONT */
+
 @utility h1-bold {
-  @apply text-[30px] font-bold leading-[42px] tracking-tighter;
+  @apply text-[30px] font-bold leading-10.5 tracking-tighter;
 }
 
 @utility h2-bold {
@@ -309,12 +321,14 @@
 }
 
 @utility h3-bold {
-  @apply text-[20px] font-bold leading-[26px];
+  @apply text-[20px] font-bold leading-6.5;
 }
 
 @utility h3-semibold {
   @apply text-[20px] font-semibold leading-[24.8px];
 }
+
+/* TEXT SIZE && FONT */
 
 @utility base-medium {
   @apply text-[18px] font-medium leading-[25.2px];
@@ -328,6 +342,8 @@
   @apply text-[18px] font-bold leading-[140%];
 }
 
+/* PARAGRAPH SIZE && FONT */
+
 @utility paragraph-regular {
   @apply text-[16px] font-normal leading-[22.4px];
 }
@@ -339,6 +355,8 @@
 @utility paragraph-semibold {
   @apply text-[16px] font-semibold leading-[20.8px];
 }
+
+/* BODY SIZE && FONT */
 
 @utility body-regular {
   @apply text-[14px] font-normal leading-[19.6px];
@@ -356,6 +374,8 @@
   @apply text-[14px] font-bold leading-[18.2px];
 }
 
+/* TEXT SIZE && FONT */
+
 @utility small-regular {
   @apply text-[12px] font-normal leading-[15.6px];
 }
@@ -369,20 +389,26 @@
 }
 
 @utility subtle-medium {
-  @apply text-[10px]! font-medium! leading-[13px]!;
+  @apply text-[10px]! font-medium! leading-3.25!;
 }
 
 @utility subtle-regular {
-  @apply text-[10px] font-normal leading-[13px];
+  @apply text-[10px] font-normal leading-3.25;
 }
+
+/* PLACEHOLDER */
 
 @utility placeholder {
   @apply placeholder:text-light-400 dark:placeholder:text-light-500;
 }
 
+/* INVERTING COLORS */
+
 @utility invert-colors {
   @apply invert dark:invert-0;
 }
+
+/* SHADOW */
 
 @utility shadow-light100_dark100 {
   @apply shadow-light-100 dark:shadow-dark-100;
@@ -391,6 +417,8 @@
 @utility shadow-light100_darknone {
   @apply shadow-light-100 dark:shadow-none;
 }
+
+/* BACKGROUND GRADIENT */
 
 @utility primary-gradient {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
@@ -412,12 +440,16 @@
   );
 }
 
+/* TEXT GRADIENT */
+
 @utility primary-text-gradient {
   background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* USING ALL SHORTCUTS BELOW */
 
 @utility flex-center {
   @apply flex justify-center items-center;
@@ -469,6 +501,8 @@
   }
 }
 
+/* CUSTOM SCROLLBAR */
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 3px;
   height: 3px;
@@ -488,15 +522,17 @@
   background: #555;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* HIDE SCROLLBAR FOR CHROME, SAFARI && OPERA */
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-/* Hide scrollbar for IE, Edge and Firefox */
+/* HIDE SCROLLBAR FOR IE, EDGE && FIREFOX */
+
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and EDGE */
+  scrollbar-width: none; /* FIREFOX */
 }
 
 .active-theme {
@@ -540,9 +576,9 @@ code {
   overflow-wrap: break-word;
   word-wrap: break-word;
 
-  -ms-word-break: break-all;
+  /*-ms-word-break: break-all;*/
   /* This is the dangerous one in WebKit, as it breaks things wherever */
-  word-break: break-all;
+  /*word-break: break-all;*/
   /* Instead use this non-standard one: */
   word-break: break-word;
 
@@ -574,7 +610,8 @@ code {
   overflow-y: auto !important;
 }
 
-/* NESTED CODE BLOCKS: Only apply grid to visible code blocks */
+/* NESTED CODE BLOCKS: ONLY APPLY GRID TO VISIBLE CODE BLOCKS */
+
 [data-bright-mode="dark"]:not(html.light [data-bright-mode="dark"]),
 [data-bright-mode="light"]:not(:not(html.light [data-bright-mode="light"])) {
   display: grid !important;

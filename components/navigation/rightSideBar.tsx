@@ -1,14 +1,22 @@
 import Link from "next/link";
 import Routes from "@/constants/routes";
 import Image from "next/image";
+import TagCards from "../cards/tagCards";
 
 const hotQuestions = [
-  { _id: 1, title: "How to learn React?" },
-  { _id: 2, title: "What is the best way to learn JavaScript?" },
-  { _id: 3, title: "How to improve coding skills?" },
-  { _id: 4, title: "What are the best resources for learning programming?" },
-  { _id: 5, title: "How to prepare for coding interviews?" },
-];
+    { _id: 1, title: "How to learn React?" },
+    { _id: 2, title: "What is the best way to learn JavaScript?" },
+    { _id: 3, title: "How to improve coding skills?" },
+    { _id: 4, title: "What are the best resources for learning programming?" },
+    { _id: 5, title: "How to prepare for coding interviews?" },
+  ],
+  popularTags = [
+    { _id: 1, name: "nextjs", questions: 100 },
+    { _id: 2, name: "javascript", questions: 200 },
+    { _id: 3, name: "typescript", questions: 150 },
+    { _id: 4, name: "react", questions: 160 },
+    { _id: 5, name: "tailwind", questions: 80 },
+  ];
 
 const RightSideBar = () => {
   return (
@@ -29,10 +37,28 @@ const RightSideBar = () => {
                 alt="Chevron"
                 width={20}
                 height={20}
+                className="invert-colors"
               />
             </Link>
           ))}
         </section>
+      </section>
+
+      {/* Container for the Popular Tags Section */}
+      <section className="mt-16">
+        <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
+        <div className="mt-7 flex flex-col gap-4">
+          {popularTags.map(({ _id, name, questions }) => (
+            <TagCards
+              key={_id}
+              _id={_id}
+              name={name}
+              questions={questions}
+              showCount
+              compact
+            />
+          ))}
+        </div>
       </section>
     </article>
   );

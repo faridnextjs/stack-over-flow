@@ -5,10 +5,10 @@ import ThemeProvider from "@/context/themeProvider";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
 import SessionWrapper from "@/lib/actions/sessionWrapper";
-import { JetBrains_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Dev Overflow Stable",
@@ -30,7 +30,15 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-mono", jetbrainsMono.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+      <head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
+        <title></title>
+      </head>
       <body className={`${googleSansFlex.variable}  antialiased`}>
         <Suspense>
           <SessionWrapper>
