@@ -5,10 +5,6 @@ import ThemeProvider from "@/context/themeProvider";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
 import SessionWrapper from "@/lib/actions/sessionWrapper";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: "Dev Overflow Stable",
@@ -30,7 +26,7 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", geist.variable)}>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="stylesheet"
@@ -39,7 +35,7 @@ const RootLayout = async ({
         />
         <title></title>
       </head>
-      <body className={`${googleSansFlex.variable}  antialiased`}>
+      <body className={`${googleSansFlex.className}  antialiased`}>
         <Suspense>
           <SessionWrapper>
             <ThemeProvider
