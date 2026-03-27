@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import ThemeToggle from "@/components/navigation/navbar/themeToggle";
-import SidebarNavigation from "@/components/navigation/navbar/sidebarNavigation";
+import MobileNavigation from "@/components/navigation/navbar/mobileNavigation";
 
 const Navbar = () => {
   console.log("Navbar rendered");
@@ -21,7 +21,7 @@ const Navbar = () => {
       <p>Global Search</p>
       <div className="flex-between gap-5">
         <ThemeToggle />
-        <SidebarNavigation />
+        <MobileNavigation />
       </div>
     </nav>
   );

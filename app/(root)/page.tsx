@@ -1,5 +1,8 @@
 import localFont from "next/font/local";
-import Session from "@/lib/actions/session";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import Routes from "@/constants/routes";
+// import Session from "@/lib/actions/session";
 
 const spaceGrotesk = localFont({
   src: "../fonts/SpaceGrotesk.ttf",
@@ -8,21 +11,29 @@ const spaceGrotesk = localFont({
 });
 
 const Home = () => {
-  console.log("Page rendered as a  Server Component");
   return (
-    <section className={`${spaceGrotesk.className}`}>
-      Welcome to Stack Overflow Clone by using Next.js 16.1.6 with React Server
-      Components 19.2.4 and NextAuth.js for authentication. This project is a
-      full-stack application that mimics the functionality of Stack Overflow,
-      allowing users to ask questions, provide answers, and engage in
-      discussions. The application is built using Next.js, which enables
-      server-side rendering and static site generation for optimal performance.
-      NextAuth.js is integrated to handle user authentication, providing a
-      secure and seamless login experience. Whether you&#39;re looking to ask a
-      question or share your knowledge, this Stack Overflow Clone offers a
-      robust platform for developers to connect and collaborate.
-      <Session />
-    </section>
+    <>
+      <section
+        className={`${spaceGrotesk.className} flex flex-col-reverse w-full justify-between gap-4 sm:flex-row sm:items-center`}
+      >
+        <h1 className="h1-bold text-dark100_light900">All Questions</h1>
+        <Button
+          className="primary-gradient min-h-11.5 px-4 py-3 text-light-900!"
+          asChild
+        >
+          <Link href={Routes.ASK_QUESTION}>Ask a Question</Link>
+        </Button>
+        {/*<Session />*/}
+      </section>
+      <section className="pt-11">Local Search</section>
+      Home Filter
+      <div className="flex flex-col mt-10 gap-6 w-full">
+        <p>Question 1</p>
+        <p>Question 2</p>
+        <p>Question 3</p>
+        <p>Question 4</p>
+      </div>
+    </>
   );
 };
 export default Home;

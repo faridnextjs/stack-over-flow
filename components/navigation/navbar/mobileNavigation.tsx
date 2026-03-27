@@ -13,7 +13,7 @@ import Routes from "@/constants/routes";
 import { Button } from "@/components/ui/button";
 import NavLinks from "@/components/navigation/navbar/navLinks";
 
-const SidebarNavigation = () => {
+const MobileNavigation = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -75,4 +75,4 @@ const SidebarNavigation = () => {
     </Sheet>
   );
 };
-export default SidebarNavigation;
+export default MobileNavigation;
