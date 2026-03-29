@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Routes from "@/constants/routes";
+import LocalSearch from "@/components/search/localSearch";
 // import Session from "@/lib/actions/session";
 
 const spaceGrotesk = localFont({
@@ -25,7 +26,14 @@ const Home = () => {
         </Button>
         {/*<Session />*/}
       </section>
-      <section className="pt-11">Local Search</section>
+      <section className="mt-11">
+        <LocalSearch
+          route="/"
+          imgSrc="/icons/search.svg"
+          placeholder="Search Questions"
+          otherClasses="flex-1"
+        />
+      </section>
       Home Filter
       <div className="flex flex-col mt-10 gap-6 w-full">
         <p>Question 1</p>
