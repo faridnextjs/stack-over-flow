@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Routes from "@/constants/routes";
 import LocalSearch from "@/components/search/localSearch";
+import HomeFilter from "@/components/filter/homeFilter";
 
 // import Session from "@/lib/actions/session";
 
@@ -64,10 +65,15 @@ interface SearchParams {
 }
 
 const Home = async ({ searchParams }: SearchParams) => {
-  const { query = "" } = await searchParams;
-  const filteredQuestions = questions.filter((questions) =>
-    questions.title.toLowerCase().includes(query?.toLowerCase()),
-  );
+  const { query = "", filter = "" } = await searchParams;
+  const filteredQuestions = questions.filter((questions) => {
+    const matchesQuery = questions.title
+      .toLowerCase()
+      .includes(query.toLowerCase());
+
+    const matchesFilter = filter ? questions.tags.some(tag => tag.name.toLowerCase() === filter.toLowerCase()) : true;
+    return matchesQuery && matchesFilter;
+  });
 
   return (
     <>
@@ -92,7 +98,7 @@ const Home = async ({ searchParams }: SearchParams) => {
           iconPosition="left"
         />
       </section>
-      {/*Home Filter*/}
+      <HomeFilter />
       <div className="flex flex-col mt-10 gap-6 w-full">
         {filteredQuestions.map((questions) => (
           <h1 key={questions._id}> {questions.title}</h1>
