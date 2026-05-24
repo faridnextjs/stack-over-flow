@@ -14,25 +14,25 @@ const nextConfig: NextConfig = {
     // 'warn'  — warnings and errors
     // true    — all console output
     // false   — disabled
-  }, // 🆕comes wih 16.0
+  },
 
   experimental: {
-    turbopackFileSystemCacheForDev: true, // 🆕comes wih 16.0
-    turbopackFileSystemCacheForBuild: true, // 🆕comes wih 16.0
+    turbopackFileSystemCacheForDev: true,
+    turbopackFileSystemCacheForBuild: true,
     viewTransition: true,
     cssChunking: true,
 
     authInterrupts: true,
-    useLightningcss: true, // 🆕comes wih 16.2
+    useLightningcss: true,
     lightningCssFeatures: {
       include: ["light-dark", "oklab-colors"],
       exclude: ["nesting"],
-    }, // 🆕comes wih 16.2
-    prefetchInlining: true, // 🆕comes wih 16.2
-    appNewScrollHandler: true, // 🆕 comes with  16.2
+    },
+    prefetchInlining: true,
+    appNewScrollHandler: true,
     sri: {
       algorithm: "sha256",
-    }, // 🆕comes wih 16.2
+    },
   },
 
   env: {
