@@ -10,7 +10,7 @@ interface Author {
 }
 
 interface Question {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   tags: Tags[];

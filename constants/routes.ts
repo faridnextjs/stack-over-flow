@@ -3,7 +3,8 @@ const Routes = {
   SIGN_IN: "/signIn",
   SIGN_UP: "/signUp",
   ASK_QUESTION: "/askQuestion",
-  PROFILE: (_id: number) => `/profile/${_id}`,
-  TAGS: (_id: number) => `/tags/${_id}`,
+  PROFILE: (id: string) => `/profile/${id}`,
+  QUESTIONS: (id: string) => `/questions/${id}`,
+  TAGS: (id: string) => `/tags/${id}`,
 } as const;
 export default Routes;

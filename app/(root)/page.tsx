@@ -16,7 +16,7 @@ const spaceGrotesk = localFont({
 
 const questions = [
   {
-    _id: "1",
+    id: "1",
     title: "How to learn React19?",
     description: "learning React19 is not hard",
     tags: [{ id: "1", name: "React19" }],
@@ -27,7 +27,7 @@ const questions = [
     createdAt: new Date(),
   },
   {
-    _id: "2",
+    id: "2",
     title: "How to learn HTML5?",
     description: "learning HTML5 is not hard",
     tags: [{ id: "2", name: "HTML5" }],
@@ -38,7 +38,7 @@ const questions = [
     createdAt: new Date(),
   },
   {
-    _id: "3",
+    id: "3",
     title: "How to learn Next16?",
     description: "learning Next16 is not hard",
     tags: [{ id: "3", name: "Next 16" }],
@@ -49,7 +49,7 @@ const questions = [
     createdAt: new Date(),
   },
   {
-    _id: "4",
+    id: "4",
     title: "How to learn TailwindCSS?",
     description: "learning TailwindCSS is not hard",
     tags: [{ id: "4", name: "TailwindCSS" }],
@@ -106,7 +106,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="flex flex-col mt-10 gap-6 w-full">
         {filteredQuestions.map((questions) => (
-          <QuestionCard key={questions._id} question={questions} />
+          <QuestionCard key={questions.id} question={questions} />
         ))}
       </div>
     </>
